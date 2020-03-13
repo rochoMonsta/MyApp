@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace LoginPassword
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+
+        private void PasswordBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Password_button.Password = "";
+        }
+
+        private void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Text_button.Text = "";
+        }
+
+        private void Button_Register_Click(object sender, RoutedEventArgs e)
+        {
+            var saver = new Saver();
+            var JsonDB = new JSONDataBase();
+            var user = new User(Login: Text_button.Text, Password: Password_button.Password);
+            JsonDB.AddNewUser(user);
+            saver.SAVE_USER(JsonDB);
+            Application.Current.Shutdown();
+        }
+    }
+}
