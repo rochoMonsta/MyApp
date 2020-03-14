@@ -43,11 +43,18 @@ namespace LoginPassword
         private void Button_Register_Click(object sender, RoutedEventArgs e)
         {
             var saver = new Saver();
-            var JsonDB = new JSONDataBase();
+            var Users_List_DB = saver.LOAD_USER();
             var user = new User(Login: Text_button.Text, Password: Password_button.Password);
-            JsonDB.AddNewUser(user);
-            saver.SAVE_USER(JsonDB);
-            Application.Current.Shutdown();
+            if (Users_List_DB.ListContains(user))
+                HasErrorLabel.Text = "This user is already registered";
+            else
+            {
+                HasErrorLabel.Foreground = Brushes.Green;
+                HasErrorLabel.Text = "Success";
+                Users_List_DB.AddNewUser(user);
+                saver.SAVE_USER(Users_List_DB);
+                //Application.Current.Shutdown();
+            }
         }
     }
 }
