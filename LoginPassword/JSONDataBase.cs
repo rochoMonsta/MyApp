@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace LoginPassword
@@ -15,14 +16,11 @@ namespace LoginPassword
         }
         public bool ListContains(User user)
         {
-            foreach (var element in ListOfUsers)
-            {
-                if (element.Login == user.Login)
-                    return true;
-                else
-                    continue;
-            }
-            return false;
+            var IsCreated = ListOfUsers.Any(item => item.Login == user.Login);
+            if (IsCreated)
+                return true;
+            else
+                return false;
         }
     }
 }
