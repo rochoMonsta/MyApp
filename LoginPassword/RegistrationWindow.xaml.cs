@@ -40,15 +40,26 @@ namespace LoginPassword
             var saver = new Saver();
             var Users_List_DB = saver.LOAD_USER();
             var user = new User(Login: Text_button.Text, Password: Password_button.Password);
-            if (Users_List_DB.ListContains(user))
-                HasErrorLabel.Text = "This user is already registered";
+            if ((user.Login == "Username" || user.Login == null || user.Login == "") || (user.Password == "Password" || user.Password == null || user.Password == ""))
+            {
+                HasErrorLabel.Foreground = Brushes.Red;
+                HasErrorLabel.Text = "Enter some Login/Password";
+            }
             else
             {
-                HasErrorLabel.Foreground = Brushes.Green;
-                HasErrorLabel.Text = "Success";
-                Users_List_DB.AddNewUser(user);
-                saver.SAVE_USER(Users_List_DB);
-                //Application.Current.Shutdown();
+                if (Users_List_DB.ListContains(user))
+                {
+                    HasErrorLabel.Foreground = Brushes.Red;
+                    HasErrorLabel.Text = "This user is already registered";
+                }
+                else
+                {
+                    HasErrorLabel.Foreground = Brushes.Green;
+                    HasErrorLabel.Text = "Success";
+                    Users_List_DB.AddNewUser(user);
+                    saver.SAVE_USER(Users_List_DB);
+                    //Application.Current.Shutdown();
+                }
             }
         }
     }
