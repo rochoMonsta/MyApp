@@ -10,14 +10,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LoginPassword
 {
-    public partial class MainWindow : Window
+    public partial class RegistrationWindow : Window
     {
-        public MainWindow()
+        public RegistrationWindow()
         {
             InitializeComponent();
         }
@@ -26,7 +25,6 @@ namespace LoginPassword
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-
         private void PasswordBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Password_button.Password = "";
@@ -37,30 +35,21 @@ namespace LoginPassword
             Text_button.Text = "";
         }
 
-        private void Button_Login_Click(object sender, RoutedEventArgs e)
+        private void Button_Register_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User();
             var saver = new Saver();
             var Users_List_DB = saver.LOAD_USER();
-            user = new User(Login: Text_button.Text, Password: Password_button.Password);
+            var user = new User(Login: Text_button.Text, Password: Password_button.Password);
             if (Users_List_DB.ListContains(user))
-            {
-                HasErrorLabel.Foreground = Brushes.Green;
-                HasErrorLabel.Text = "Success enter";
-                //open app for user;
-            }
+                HasErrorLabel.Text = "This user is already registered";
             else
             {
-                HasErrorLabel.Foreground = Brushes.Red;
-                HasErrorLabel.Text = "This user dosen't exist";
+                HasErrorLabel.Foreground = Brushes.Green;
+                HasErrorLabel.Text = "Success";
+                Users_List_DB.AddNewUser(user);
+                saver.SAVE_USER(Users_List_DB);
+                //Application.Current.Shutdown();
             }
-        }
-        private void Register_TextDown_Event(object sender, RoutedEventArgs e)
-        {
-            RegistrationWindow registration = new RegistrationWindow();
-            this.Hide();
-            registration.ShowDialog();
-            this.Show();
         }
     }
 }
