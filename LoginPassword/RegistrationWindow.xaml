@@ -94,7 +94,7 @@
                            FontFamily="helvetica" FontSize="14"
                            Foreground="Red" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
                     </TextBlock>
-                    <Button Width="60" Height="30" 
+                    <Button Style="{StaticResource ModernButtonStyle}" Width="60" Height="30" 
                             Content="Register"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"

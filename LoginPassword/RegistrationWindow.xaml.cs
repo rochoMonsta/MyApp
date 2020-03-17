@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LoginPassword.Windows;
 
 namespace LoginPassword
 {
@@ -59,6 +60,10 @@ namespace LoginPassword
                     Users_List_DB.AddNewUser(user);
                     saver.SAVE_USER(Users_List_DB);
                     //Application.Current.Shutdown();
+                    AppWidnow appWidnow = new AppWidnow();
+                    this.Hide();
+                    appWidnow.ShowDialog();
+                    this.Show();
                 }
             }
         }

@@ -100,7 +100,8 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Margin="0, 10, 0, 0"
-                            Click="Button_Login_Click">
+                            Click="Button_Login_Click"
+                            Style="{StaticResource ModernButtonStyle}">
                     </Button>
                     <TextBlock x:Name="RegisterTextBlock"
                                MouseDown="Register_TextDown_Event"

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LoginPassword.Windows;
 
 namespace LoginPassword
 {
@@ -48,6 +49,10 @@ namespace LoginPassword
                 HasErrorLabel.Foreground = Brushes.Green;
                 HasErrorLabel.Text = "Success enter";
                 //open app for user;
+                AppWidnow appWidnow = new AppWidnow();
+                this.Hide();
+                appWidnow.ShowDialog();
+                this.Show();
             }
             else
             {
@@ -61,6 +66,10 @@ namespace LoginPassword
             this.Hide();
             registration.ShowDialog();
             this.Show();
+            //AppWidnow appWidnow = new AppWidnow();
+            //this.Hide();
+            //appWidnow.ShowDialog();
+            //this.Show();
         }
     }
 }
