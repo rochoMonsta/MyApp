@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AppWidnow" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Foreground="White" MouseDown="Window_MouseDown">
-    
+
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -32,7 +32,7 @@
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
     </Window.Triggers>
-    
+
     <Grid Background="LightGray">
         <Grid Height="60" VerticalAlignment="Top" Background="#FF5B415C">
             <TextBlock Text="ABC Launcher"
@@ -64,13 +64,25 @@
         </Grid>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF362337">
             <StackPanel>
-                <Grid Height="150" Background="White">
+                <Grid Height="150" Background="White" x:Name="UserGrid">
                     <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF362337" Width="25" Height="25"/>
                     </Button>
                     <Button x:Name="ButtonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Foreground="#FF362337" Width="25" Height="25"/>
                     </Button>
+
+                    <StackPanel Orientation="Horizontal" Margin="5,60,5,40">
+                        <Image x:Name="UserProfileImage" Stretch="UniformToFill" Width="50" Height="50" VerticalAlignment="Top">
+                            <Image.Clip>
+                                <EllipseGeometry Center="25, 25" RadiusX="25" RadiusY="25"/>
+                            </Image.Clip>
+                        </Image>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5, 110, 5, 0">
+                        <materialDesign:PackIcon x:Name="ChangeUserPhoto" Kind="InsertPhoto" Foreground="#FF5B415C" VerticalAlignment="Center" Margin="13, 0, 0, 0" Width="25" Height="25" MouseDown="ChangeUserPhoto_MouseDown"/>
+                    </StackPanel>
+                    
                 </Grid>
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF5B415C">
                     <ListViewItem Height="60">
