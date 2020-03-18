@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Register" Height="380" Width="310"
         AllowsTransparency="True" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+        WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

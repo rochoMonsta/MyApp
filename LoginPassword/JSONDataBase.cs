@@ -22,5 +22,17 @@ namespace LoginPassword
             else
                 return false;
         }
+        public bool CheckForCorrectUserAndPassword(User user)
+        {
+            User UserByLogin = new User();
+            var IsCreatedLogin = ListOfUsers.Any(item => item.Login == user.Login);
+            if (IsCreatedLogin)
+                UserByLogin = ListOfUsers.Last(item => item.Login == user.Login);
+            if (UserByLogin == null) { return false; }
+            if (IsCreatedLogin && UserByLogin.Password == user.Password)
+                return true;
+            else
+                return false;
+        }
     }
 }

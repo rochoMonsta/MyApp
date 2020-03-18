@@ -44,7 +44,7 @@ namespace LoginPassword
             var saver = new Saver();
             var Users_List_DB = saver.LOAD_USER();
             user = new User(Login: Text_button.Text, Password: Password_button.Password);
-            if (Users_List_DB.ListContains(user))
+            if (Users_List_DB.CheckForCorrectUserAndPassword(user))
             {
                 HasErrorLabel.Foreground = Brushes.Green;
                 HasErrorLabel.Text = "Success enter";
@@ -66,10 +66,6 @@ namespace LoginPassword
             this.Hide();
             registration.ShowDialog();
             this.Show();
-            //AppWidnow appWidnow = new AppWidnow();
-            //this.Hide();
-            //appWidnow.ShowDialog();
-            //this.Show();
         }
     }
 }
