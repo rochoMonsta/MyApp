@@ -22,6 +22,19 @@ namespace LoginPassword
             else
                 return false;
         }
+        public int GetUserIndex(User user)
+        {
+            User UserByLogin = new User();
+            var IsCreatedLogin = ListOfUsers.Any(item => item.Login == user.Login);
+            if (IsCreatedLogin)
+                UserByLogin = ListOfUsers.Last(item => item.Login == user.Login);
+            int index = ListOfUsers.IndexOf(UserByLogin);
+            return index;
+        }
+        public void ChangeUserInfo(User user, int index)
+        {
+            ListOfUsers[index] = user;
+        }
         public bool CheckForCorrectUserAndPassword(User user)
         {
             User UserByLogin = new User();
@@ -33,6 +46,12 @@ namespace LoginPassword
                 return true;
             else
                 return false;
+        }
+        public User GetCurrentUser(User user)
+        {
+            User UserByLogin = new User();
+            UserByLogin = ListOfUsers.Last(item => item.Login == user.Login);
+            return UserByLogin;
         }
     }
 }

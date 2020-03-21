@@ -1,14 +1,21 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LoginPassword
 {
     [DataContract]
-    class User
+    public class User
     {
         [DataMember]
         public string Login { get; set; }
         [DataMember]
         public string Password { get; set; }
+        [DataMember]
+        public List<Film> films = new List<Film>();
+        [DataMember]
+        public string AvatarLink { get; set; }
+        //internal List<Film> Films { get => films; set => films = value; }
+        public static User currentUser;
         public User() { }
         public User(string Login, string Password)
         {

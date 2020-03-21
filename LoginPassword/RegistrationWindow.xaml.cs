@@ -59,7 +59,8 @@ namespace LoginPassword
                     HasErrorLabel.Text = "Success";
                     Users_List_DB.AddNewUser(user);
                     saver.SAVE_USER(Users_List_DB);
-                    //Application.Current.Shutdown();
+                    User.currentUser = Users_List_DB.GetCurrentUser(user);
+
                     AppWidnow appWidnow = new AppWidnow();
                     this.Hide();
                     appWidnow.ShowDialog();

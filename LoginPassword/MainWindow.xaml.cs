@@ -48,7 +48,8 @@ namespace LoginPassword
             {
                 HasErrorLabel.Foreground = Brushes.Green;
                 HasErrorLabel.Text = "Success enter";
-                //open app for user;
+                User.currentUser = Users_List_DB.GetCurrentUser(user);
+
                 AppWidnow appWidnow = new AppWidnow();
                 this.Hide();
                 appWidnow.ShowDialog();

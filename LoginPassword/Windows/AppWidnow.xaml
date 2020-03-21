@@ -8,7 +8,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AppWidnow" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Foreground="White" MouseDown="Window_MouseDown">
-
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -22,6 +21,28 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        
+        <Style TargetType="{x:Type Button}" x:Key="myButtonStyle">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Setter Property="Opacity" Value="0.8"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Window.Triggers>
@@ -34,14 +55,40 @@
     </Window.Triggers>
 
     <Grid Background="LightGray">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF5B415C">
+        <Frame x:Name="FilmMain" NavigationUIVisibility="Hidden" Margin="60, 60, 0, 0"/>
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF686868">
             <TextBlock Text="ABC Launcher"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="22"
                        FontFamily="helvetica"
-                       FontWeight="Light" />
+                       FontWeight="Light"
+                       x:Name="WelcomeTextBlock"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="AddFilmToUserFilmList"
+                        Click="AddFilmToUserFilmList_Click"
+                        Height="30"
+                        Width="100"
+                        Style="{StaticResource myButtonStyle}"
+                        Background="Black"
+                        Opacity="0.8"
+                        BorderBrush="{x:Null}"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="10">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Add film"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="helvetica"
+                                   FontWeight="Light"
+                                   Margin="3, 0, 3, 0"
+                                   FontSize="14"/>
+                        <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
                 <TextBlock Text="Settings"
                            VerticalAlignment="Center"
                            FontSize="18"
@@ -49,7 +96,7 @@
                            FontWeight="Light"/>
                 <materialDesign:PopupBox Margin="10"
                                          PlacementMode="BottomAndAlignRightEdges"
-                                         StaysOpen="False">
+                                         StaysOpen="True">
                     <StackPanel Width="150">
                         <Button Content="Account"/>
                         <Button Content="Settings"/>
@@ -62,7 +109,7 @@
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF362337">
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF2C2C2C">
             <StackPanel>
                 <Grid Height="150" Background="White" x:Name="UserGrid">
                     <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
@@ -78,17 +125,28 @@
                                 <EllipseGeometry Center="25, 25" RadiusX="25" RadiusY="25"/>
                             </Image.Clip>
                         </Image>
+                        <TextBlock x:Name="UserName"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="20, 0, 0, 0"
+                                   Text=""
+                                   FontFamily="helvetica"
+                                   FontWeight="Light"
+                                   FontSize="20"
+                                   Foreground="#FF686868"
+                                   Width="100">
+                        </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5, 110, 5, 0">
-                        <materialDesign:PackIcon x:Name="ChangeUserPhoto" Kind="InsertPhoto" Foreground="#FF5B415C" VerticalAlignment="Center" Margin="13, 0, 0, 0" Width="25" Height="25" MouseDown="ChangeUserPhoto_MouseDown"/>
+                        <materialDesign:PackIcon x:Name="ChangeUserPhoto" Kind="InsertPhoto" Foreground="#FF686868" VerticalAlignment="Center" Margin="13, 0, 0, 0" Width="25" Height="25" MouseDown="ChangeUserPhoto_MouseDown"/>
                     </StackPanel>
                     
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF5B415C">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF686868">
                     <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" MouseDown="AllFilms_MouseDown">
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="All films" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
