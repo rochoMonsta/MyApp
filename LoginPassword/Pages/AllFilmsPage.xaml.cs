@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,6 +22,7 @@ namespace LoginPassword.Pages
     public partial class AllFilmsPage : Page
     {
         public static User user;
+        public static int i = 0;
         public AllFilmsPage()
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace LoginPassword.Pages
             {
                 imageBrush.ImageSource = new BitmapImage(new Uri(film.Link));
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 imageBrush.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Resources/screen-0.jpg"));
             }
@@ -177,12 +179,14 @@ namespace LoginPassword.Pages
             stackPanel.Children.Add(PopUpBoxStackPanel);
 
             button.Content = stackPanel;
+            ++i;
 
             return button;
         }
         private void YourButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Номер" + FilmsWrapPannel.Children.IndexOf(sender as UIElement));
+            var oneLevel = (((ButtonBase)sender).CommandParameter) as UIElement;
+            MessageBox.Show("Номер" + FilmsWrapPannel.Children.IndexOf(oneLevel));
         }
     }
 }
