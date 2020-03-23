@@ -18,6 +18,8 @@ namespace LoginPassword
         public double Mark { get; set; }
         [DataMember]
         public string Comment { get; set; }
+        public static Film CurrentFilm;
+        public static int CurrentFilmIndex;
         public Film() { }
         public Film(string Name, string Link, double Mark, string Comment)
         {

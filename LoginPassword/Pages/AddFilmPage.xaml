@@ -86,6 +86,32 @@
                                                 Width="35"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+                <TextBox x:Name="CommentButton" 
+                         Height="170"
+                         Text="Your comment"
+                         FontSize="15"
+                         FontFamily="helvetica"
+                         FontWeight="Light"
+                         HorizontalAlignment="Center"
+                         Foreground="White"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="400"
+                         HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Top"
+                         Opacity="0.5"
+                         TextWrapping="Wrap"
+                         Margin="18, 0, 0, 0"
+                         PreviewMouseLeftButtonDown="CommentButton_PreviewMouseLeftButtonDown"/>
+                <iconPacks:PackIconMaterial Kind="Comment" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Top"
+                                                Foreground="White"
+                                                Opacity="0.5"
+                                                Height="35"
+                                                Width="35"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
                 <Button x:Name="PhotoLink"
                         Click="PhotoLink_Click"
                         Width="400"

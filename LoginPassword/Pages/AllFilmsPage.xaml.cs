@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LoginPassword.Windows;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -35,12 +36,14 @@ namespace LoginPassword.Pages
                 }
             }
         }
+
         public Button CreateNewButton(Film film)
         {
             Button button = new Button();
             button.Margin = new Thickness(5);
             button.Style = (Style)FindResource("myButtonStyle");
             button.BorderBrush = null;
+            button.Click += new RoutedEventHandler(YourButtonClick);
 
             ImageBrush imageBrush = new ImageBrush();
             try
@@ -145,7 +148,7 @@ namespace LoginPassword.Pages
 
             //3.3
             Button button2 = new Button();
-            button2.Click += new RoutedEventHandler(YourButtonClick);
+            //button2.Click += new RoutedEventHandler(YourButtonClick);
             StackPanel stackPanel3 = new StackPanel();
             stackPanel3.Orientation = Orientation.Horizontal;
 
@@ -185,8 +188,11 @@ namespace LoginPassword.Pages
         }
         private void YourButtonClick(object sender, EventArgs e)
         {
-            var oneLevel = (((ButtonBase)sender).CommandParameter) as UIElement;
-            MessageBox.Show("Номер" + FilmsWrapPannel.Children.IndexOf(oneLevel));
+            int indexOfFilm = FilmsWrapPannel.Children.IndexOf(sender as UIElement);
+            Film.CurrentFilm = user.films[indexOfFilm];
+            Film.CurrentFilmIndex = indexOfFilm;
+            var filmInfo = new FilmInfo();
+            NavigationService.Navigate(filmInfo);
         }
     }
 }

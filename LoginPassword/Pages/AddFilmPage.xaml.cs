@@ -51,18 +51,28 @@ namespace LoginPassword.Pages
 
         private void AddFilmToUser_Click(object sender, RoutedEventArgs e)
         {
+            if (MarkButton.Text == "Your mark")
+                MarkButton.Text = "0";
             var Film = new Film()
             {
                 Name = Text_button.Text,
                 Mark = Convert.ToDouble(MarkButton.Text),
-                Link = PhotoLinkString
+                Link = PhotoLinkString,
+                Comment = CommentButton.Text
             };
             user.films.Add(Film);
+            var allFilmsPage = new AllFilmsPage();
+            NavigationService.Navigate(allFilmsPage);
         }
 
         private void MarkButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MarkButton.Text = "";
+        }
+
+        private void CommentButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CommentButton.Text = "";
         }
     }
 }

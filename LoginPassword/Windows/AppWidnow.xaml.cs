@@ -77,13 +77,15 @@ namespace LoginPassword.Windows
 
         private void AddFilmToUserFilmList_Click(object sender, RoutedEventArgs e)
         {
-            FilmMain.Content = new AddFilmPage();
+            var FilmPage = new AddFilmPage();
+            FilmMain.Navigate(FilmPage);
             WelcomeTextBlock.Text = "Add film";
         }
 
         private void AllFilms_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            FilmMain.Content = new AllFilmsPage();
+            var AllFilmPage = new AllFilmsPage();
+            FilmMain.Navigate(AllFilmPage);
             WelcomeTextBlock.Text = "All films";
         }
     }
