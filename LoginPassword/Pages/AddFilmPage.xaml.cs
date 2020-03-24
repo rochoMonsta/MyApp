@@ -26,8 +26,6 @@ namespace LoginPassword.Pages
         public static string PhotoLinkString;
         public static User user;
 
-        public object FilmMain { get; private set; }
-
         public AddFilmPage()
         {
             InitializeComponent();

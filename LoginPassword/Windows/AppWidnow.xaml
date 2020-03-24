@@ -65,6 +65,44 @@
                        FontWeight="Light"
                        x:Name="WelcomeTextBlock"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <materialDesign:PopupBox Margin="0, 0, 5, 0"
+                                         PlacementMode="BottomAndAlignRightEdges"
+                                         StaysOpen="True">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Sort"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" 
+                                                     Width="30" 
+                                                     Height="30"/>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel Width="150">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Sort by mark"
+                                    x:Name="SortByMarkUp"
+                                    Click="SortByMarkUp_Click"/>
+                            <materialDesign:PackIcon Kind="ArrowUp" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Sort by mark"
+                                    x:Name="SortByMarkDown"
+                                    Click="SortByMarkDown_Click"/>
+                            <materialDesign:PackIcon Kind="ArrowDown" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Sort by name"
+                                    x:Name="SortByNameUp"
+                                    Click="SortByNameUp_Click"/>
+                            <materialDesign:PackIcon Kind="ArrowUp" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Sort by name"
+                                    x:Name="SortByNameDown"
+                                    Click="SortByNameDown_Click"/>
+                            <materialDesign:PackIcon Kind="ArrowDown" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:PopupBox>
                 <Button x:Name="AddFilmToUserFilmList"
                         Click="AddFilmToUserFilmList_Click"
                         Height="30"
@@ -75,7 +113,7 @@
                         BorderBrush="{x:Null}"
                         VerticalContentAlignment="Center"
                         HorizontalContentAlignment="Center"
-                        Margin="10">
+                        Margin="5">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="Add film"
                                    Foreground="White"
@@ -145,8 +183,14 @@
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF686868">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal" MouseDown="AllFilms_MouseDown">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <materialDesign:PackIcon Kind="FilmOpen" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="All films" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" x:Name="OpenLibrari" MouseDown="OpenLibrari_MouseDown">
+                            <materialDesign:PackIcon Kind="LibraryMovie" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Library" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
@@ -171,6 +215,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="GithubBox" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="GitHub" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" x:Name="Exit" MouseDown="Exit_MouseDown">
+                            <materialDesign:PackIcon Kind="ExitRun" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Exit" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

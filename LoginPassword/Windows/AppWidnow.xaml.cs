@@ -22,6 +22,9 @@ namespace LoginPassword.Windows
     public partial class AppWidnow : Window
     {
         public static User user;
+
+        public static List<Film> userFilmsListCopy = new List<Film>();
+        public bool IsOpen = false;
         public AppWidnow()
         {
             InitializeComponent();
@@ -35,16 +38,24 @@ namespace LoginPassword.Windows
                 catch(Exception) { }
                 UserName.Text = user.Login;
             }
+            if (IsOpen != true && user.films != null)
+                userFilmsListCopy = user.films;
+            IsOpen = true;
         }
 
         private void ButtonPopupBoxLogout_Click(object sender, RoutedEventArgs e)
         {
             Saver saver = new Saver();
             var user_list = saver.LOAD_USER();
+            user.films = userFilmsListCopy;
             int index = user_list.GetUserIndex(user);
             user_list.ChangeUserInfo(user, index);
             saver.SAVE_USER(user_list);
-            Application.Current.Shutdown();
+
+            MainWindow loginWindow = new MainWindow();
+            this.Hide();
+            loginWindow.ShowDialog();
+            this.Show();
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -86,6 +97,56 @@ namespace LoginPassword.Windows
         {
             var AllFilmPage = new AllFilmsPage();
             FilmMain.Navigate(AllFilmPage);
+            WelcomeTextBlock.Text = "All films";
+        }
+
+        private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Saver saver = new Saver();
+            var user_list = saver.LOAD_USER();
+            user.films = userFilmsListCopy;
+            int index = user_list.GetUserIndex(user);
+            user_list.ChangeUserInfo(user, index);
+            saver.SAVE_USER(user_list);
+            Application.Current.Shutdown();
+        }
+
+        private void OpenLibrari_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var LibrariPage = new Librari();
+            FilmMain.Navigate(LibrariPage);
+            WelcomeTextBlock.Text = "Librari";
+        }
+
+        private void SortByMarkUp_Click(object sender, RoutedEventArgs e)
+        {
+            user.films = user.films.OrderBy(film => film.Mark).ThenBy(film => film.Name).ToList();
+            var AllFilmsPage = new AllFilmsPage();
+            FilmMain.Navigate(AllFilmsPage);
+            WelcomeTextBlock.Text = "All films";
+        }
+
+        private void SortByMarkDown_Click(object sender, RoutedEventArgs e)
+        {
+            user.films = user.films.OrderByDescending(film => film.Mark).ThenBy(film => film.Name).ToList();
+            var AllFilmsPage = new AllFilmsPage();
+            FilmMain.Navigate(AllFilmsPage);
+            WelcomeTextBlock.Text = "All films";
+        }
+
+        private void SortByNameUp_Click(object sender, RoutedEventArgs e)
+        {
+            user.films = user.films.OrderBy(film => film.Name).ToList();
+            var AllFilmsPage = new AllFilmsPage();
+            FilmMain.Navigate(AllFilmsPage);
+            WelcomeTextBlock.Text = "All films";
+        }
+
+        private void SortByNameDown_Click(object sender, RoutedEventArgs e)
+        {
+            user.films = user.films.OrderByDescending(film => film.Name).ToList();
+            var AllFilmsPage = new AllFilmsPage();
+            FilmMain.Navigate(AllFilmsPage);
             WelcomeTextBlock.Text = "All films";
         }
     }

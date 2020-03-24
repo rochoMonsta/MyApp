@@ -14,6 +14,8 @@ namespace LoginPassword
         public List<Film> films = new List<Film>();
         [DataMember]
         public string AvatarLink { get; set; }
+        [DataMember]
+        public List<UserLibrari> userLibraris = new List<UserLibrari>();
         //internal List<Film> Films { get => films; set => films = value; }
         public static User currentUser;
         public User() { }
