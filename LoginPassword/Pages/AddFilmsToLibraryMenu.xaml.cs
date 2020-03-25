@@ -53,9 +53,20 @@ namespace LoginPassword.Pages
         }
         private void YourButtonClick(object sender, EventArgs e)
         {
+            var button = sender as Button;
             int indexOfFilm = FilmsWrapPannel.Children.IndexOf(sender as UIElement);
-            SelectedFilms.Text += user.films[indexOfFilm].Name + ", ";
-            IndexOfSelectedFilms.Add(indexOfFilm);
+            if (IndexOfSelectedFilms.Contains(indexOfFilm))
+            {
+                button.Opacity = 1.0;
+                IndexOfSelectedFilms.Remove(indexOfFilm);
+                SelectedFilms.Text = SelectedFilms.Text.Replace(user.films[indexOfFilm].Name + ", ", "");
+            }
+            else
+            {
+                SelectedFilms.Text += user.films[indexOfFilm].Name + ", ";
+                IndexOfSelectedFilms.Add(indexOfFilm);
+                button.Opacity = 0.2;
+            }
         }
         public Button CreateNewButton(Film film)
         {
