@@ -39,7 +39,7 @@
                         x:Name="AddNewLibrari" 
                         Click="AddNewLibrari_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Resources/add.jpg" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/add.png" Stretch="UniformToFill"/>
                     </Button.Background>
                     <StackPanel Orientation="Horizontal" Background="Black" Opacity="0.8" Height="30">
                         <TextBlock Text="Add new librari"

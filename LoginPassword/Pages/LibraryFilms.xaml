@@ -1,0 +1,195 @@
+﻿<Page x:Class="LoginPassword.Pages.LibraryFilms"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginPassword.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="540" d:DesignWidth="1020"
+      Title="LibraryFilms">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="myButtonStyle">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Setter Property="Opacity" Value="0.8"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Black">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="LibraryImage" Stretch="UniformToFill" Height="135" Width="245" Margin="5, 0, 5, 0"/>
+                    <StackPanel Orientation="Vertical" Height="135" Width="500" Margin="5,0,0,5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="LibraryName"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Text=""
+                                       FontFamily="helvetica"
+                                       FontWeight="Light"
+                                       FontSize="60"
+                                       Foreground="White"
+                                       Width="500"
+                                       Height="80"
+                                       IsReadOnly="True">
+                            </TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="CountOfItemInLibrary"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Text=""
+                                       FontFamily="helvetica"
+                                       FontWeight="Light"
+                                       FontSize="25"
+                                       Foreground="LightGray"
+                                       Width="247"
+                                       Height="55" 
+                                       Margin="3, 0, 0, 0">
+                            </TextBlock>
+                            <TextBlock x:Name="MidleMark"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Text=""
+                                       FontFamily="helvetica"
+                                       FontWeight="Light"
+                                       FontSize="25"
+                                       Foreground="Gold"
+                                       Width="247"
+                                       Height="55"
+                                       Margin="3, 0, 0, 0">
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="5, 0, 0, 0" Width="255">
+                        <StackPanel Orientation="Horizontal" Height="45">
+                            <TextBlock FontSize="20"
+                                       Foreground="LightGray"
+                                       Text="Sorting"
+                                       VerticalAlignment="Center"
+                                       x:Name="SortingLib"/>
+                            <materialDesign:PopupBox Margin="5, 0, 5, 0"
+                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                     StaysOpen="True"
+                                                     x:Name="SertedMenu">
+                                <materialDesign:PopupBox.ToggleContent>
+                                    <materialDesign:PackIcon Kind="Sort"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" 
+                                                     Width="30" 
+                                                     Height="30"/>
+                                </materialDesign:PopupBox.ToggleContent>
+                                <StackPanel Width="150">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Sort by mark"
+                                                x:Name="SortByMarkUp"
+                                                Click="SortByMarkUp_Click"/>
+                                        <materialDesign:PackIcon Kind="ArrowUp" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Sort by mark"
+                                                x:Name="SortByMarkDown"
+                                                Click="SortByMarkDown_Click"/>
+                                        <materialDesign:PackIcon Kind="ArrowDown" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Sort by name"
+                                                x:Name="SortByNameUp"
+                                                Click="SortByNameUp_Click"/>
+                                        <materialDesign:PackIcon Kind="ArrowUp" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Sort by name"
+                                                x:Name="SortByNameDown"
+                                                Click="SortByNameDown_Click"/>
+                                        <materialDesign:PackIcon Kind="ArrowDown" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                            <TextBlock FontSize="20"
+                                       Foreground="LightGray"
+                                       Text="Edit"
+                                       VerticalAlignment="Center"
+                                       Margin="90, 0, 0, 0"/>
+                            <materialDesign:PopupBox Margin="0, 4, 0, 0"
+                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                     StaysOpen="True"
+                                                     Foreground="White"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center">
+                                <StackPanel Width="150">
+                                    <Button Content="Change photo"
+                                            x:Name="ChangePhoto"
+                                            Click="ChangePhoto_Click"/>
+                                    <Button Content="Change name"
+                                            x:Name="ChangeName"
+                                            Click="ChangeName_Click"/>
+                                    <Button Content="Save"
+                                            x:Name="SaveChanged"
+                                            Click="SaveChanged_Click"/>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Height="30">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource ModernButtonStyle}"
+                                        Height="30"
+                                        Width="120"
+                                        x:Name="AddFilmToLibraryButton"
+                                        Click="AddFilmToLibraryButton_Click">
+                                    <TextBlock Text="Add film"
+                                               FontFamily="helvetica"
+                                               FontSize="20"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontWeight="Light"
+                                               Foreground="LightGray">
+                                    </TextBlock>
+                                </Button>
+                                <Button Style="{StaticResource ModernButtonStyle}"
+                                        Height="30"
+                                        Width="120"
+                                        Margin="10, 0, 0, 0"
+                                        x:Name="DeleteLibraryButton"
+                                        Click="DeleteLibraryButton_Click">
+                                    <TextBlock Text="Delete Lib"
+                                               FontFamily="helvetica"
+                                               FontSize="20"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontWeight="Light"
+                                               Foreground="LightGray">
+                                    </TextBlock>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Separator Margin="0, 5, 0, 0"/>
+                <WrapPanel x:Name="LibraryFilmsWrapPannel" ItemWidth="255" ItemHeight="135" Orientation="Horizontal">
+                    
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

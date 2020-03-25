@@ -79,11 +79,6 @@ namespace LoginPassword.Pages
             textBlock.FontWeight = FontWeights.Light;
             textBlock.FontFamily = new FontFamily("helvetica");
             textBlock.Margin = new Thickness(3, 0, 3, 0);
-            //textBlock.Opacity = new Double();
-            //textBlock.Opacity = 0.8;
-            //textBlock.Width = 245;
-            //textBlock.Height = 30;
-            //textBlock.Background = Brushes.Black;
             stackPanel.Children.Add(textBlock);
 
             button.Content = stackPanel;
@@ -94,10 +89,9 @@ namespace LoginPassword.Pages
             int indexOfLibrari = LibrariWrapPannel.Children.IndexOf(sender as UIElement) - 1;
             UserLibrari.currentUserLibrari = user.userLibraris[indexOfLibrari];
             UserLibrari.currentUserLibrariIndex = indexOfLibrari;
-            MessageBox.Show("Номер" + indexOfLibrari);
+            var page = new LibraryFilms();
+            NavigationService.Navigate(page);
+            //MessageBox.Show("Номер" + indexOfLibrari);
         }
-
-        //var filmInfo = new FilmInfo();
-        //NavigationService.Navigate(filmInfo);
     }
 }
