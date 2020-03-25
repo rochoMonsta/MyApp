@@ -45,6 +45,12 @@ namespace LoginPassword.Pages
             var page = new LibraryFilms();
             NavigationService.Navigate(page);
         }
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            IndexOfSelectedFilms.Clear();
+            var page = new Librari();
+            NavigationService.Navigate(page);
+        }
         private void YourButtonClick(object sender, EventArgs e)
         {
             int indexOfFilm = FilmsWrapPannel.Children.IndexOf(sender as UIElement);

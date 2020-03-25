@@ -46,21 +46,38 @@
                              TextWrapping="Wrap"
                              IsReadOnly="True"
                              x:Name="SelectedFilms"/>
-                    <Button Margin="10, 0, 0, 0"
-                            Height="50"
-                            Style="{StaticResource ModernButtonStyle}"
-                            Width="200"
-                            x:Name="AddSelectedFilmsToLibrary"
-                            Click="AddSelectedFilmsToLibrary_Click">
-                        <TextBlock Text="Add selected films"
-                                   FontFamily="helvetica"
-                                   FontSize="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontWeight="Light"
-                                   Foreground="LightGray">
-                        </TextBlock>
-                    </Button>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Margin="10, 0, 0, 0"
+                                Height="25"
+                                Style="{StaticResource ModernButtonStyle}"
+                                Width="200"
+                                x:Name="AddSelectedFilmsToLibrary"
+                                Click="AddSelectedFilmsToLibrary_Click">
+                            <TextBlock Text="Add selected films"
+                                       FontFamily="helvetica"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Light"
+                                       Foreground="LightGray">
+                            </TextBlock>
+                        </Button>
+                        <Button Margin="10, 5, 0, 0"
+                                Height="25"
+                                Style="{StaticResource ModernButtonStyle}"
+                                Width="200"
+                                x:Name="CancelButton"
+                                Click="CancelButton_Click">
+                            <TextBlock Text="Cancel"
+                                       FontFamily="helvetica"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Light"
+                                       Foreground="LightGray">
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel>
                     <WrapPanel x:Name="FilmsWrapPannel" ItemWidth="255" ItemHeight="135" Orientation="Horizontal">
