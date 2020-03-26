@@ -115,7 +115,7 @@ namespace LoginPassword.Windows
         {
             var LibrariPage = new Librari();
             FilmMain.Navigate(LibrariPage);
-            WelcomeTextBlock.Text = "Librari";
+            WelcomeTextBlock.Text = "Library";
         }
 
         private void SortByMarkUp_Click(object sender, RoutedEventArgs e)

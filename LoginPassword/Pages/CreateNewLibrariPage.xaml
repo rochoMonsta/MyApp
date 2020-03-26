@@ -38,7 +38,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
                 <TextBox x:Name="LibrariName_button" 
                          Height="50"
-                         Text="Librari name"
+                         Text="Library name"
                          FontSize="15"
                          FontFamily="helvetica"
                          FontWeight="Light"
@@ -65,7 +65,7 @@
                         Click="LibrariPhotoLink_Click"
                         Width="400"
                         Style="{StaticResource ModernButtonStyle}"
-                        Content="Add librari photo"
+                        Content="Add library photo"
                         FontSize="24"
                         FontWeight="Light"
                         FontFamily="helvetica"/>
@@ -75,7 +75,7 @@
                         Click="AddLibrariToUser_Click"
                         Width="400"
                         Style="{StaticResource ModernButtonStyle}"
-                        Content="Add librari to user"
+                        Content="Add library to user"
                         FontSize="24"
                         FontWeight="Light"
                         FontFamily="helvetica"/>

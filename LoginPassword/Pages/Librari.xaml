@@ -42,7 +42,7 @@
                         <ImageBrush ImageSource="pack://application:,,,/Resources/add.png" Stretch="UniformToFill"/>
                     </Button.Background>
                     <StackPanel Orientation="Horizontal" Background="Black" Opacity="0.8" Height="30">
-                        <TextBlock Text="Add new librari"
+                        <TextBlock Text="Add new library"
                                Foreground="White"
                                HorizontalAlignment="Center"
                                TextAlignment="Center"
