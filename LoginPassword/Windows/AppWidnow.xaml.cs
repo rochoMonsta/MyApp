@@ -36,7 +36,10 @@ namespace LoginPassword.Windows
                     UserProfileImage.Source = new BitmapImage(new Uri(user.AvatarLink));
                 }
                 catch(Exception) { }
-                UserName.Text = user.Login;
+                if (user.Username == null)
+                    UserName.Text = user.Login;
+                else
+                    UserName.Text = user.Username;
             }
             if (IsOpen != true && user.films != null)
                 userFilmsListCopy = user.films;
@@ -148,6 +151,13 @@ namespace LoginPassword.Windows
             var AllFilmsPage = new AllFilmsPage();
             FilmMain.Navigate(AllFilmsPage);
             WelcomeTextBlock.Text = "All films";
+        }
+
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new AccountSettings();
+            FilmMain.Navigate(page);
+            WelcomeTextBlock.Text = "Account settings";
         }
     }
 }

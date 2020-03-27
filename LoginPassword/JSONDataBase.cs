@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace LoginPassword
 {
     [DataContract]
-    class JSONDataBase
+    public class JSONDataBase
     {
         [DataMember]
         private List<User> ListOfUsers = new List<User>();

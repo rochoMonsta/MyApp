@@ -134,9 +134,11 @@
                            FontWeight="Light"/>
                 <materialDesign:PopupBox Margin="10"
                                          PlacementMode="BottomAndAlignRightEdges"
-                                         StaysOpen="True">
+                                         StaysOpen="False">
                     <StackPanel Width="150">
-                        <Button Content="Account"/>
+                        <Button Content="Account"
+                                x:Name="AccountButton"
+                                Click="AccountButton_Click"/>
                         <Button Content="Settings"/>
                         <Button Content="Help"/>
                         <Separator/>
