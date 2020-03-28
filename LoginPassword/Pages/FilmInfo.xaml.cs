@@ -26,6 +26,7 @@ namespace LoginPassword.Pages
         public int index;
         public string PhotoLinkString;
         public bool IsChanged = false;
+        
         public FilmInfo()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace LoginPassword.Pages
             film = Film.CurrentFilm;
             user = User.currentUser;
             index = Film.CurrentFilmIndex;
+            
             if (film != null)
             {
                 if (film.Link != null)
@@ -44,6 +46,26 @@ namespace LoginPassword.Pages
                 CommentTextBlock.Text = film.Comment;
             }
 
+        }
+        public void ChangeFilmInfoInLibrary(Film film)
+        {
+            int index = 0;
+            Film FilmBox = new Film();
+            for (int i = 0; i < user.userLibraris.Count; ++i)
+            {
+                if (user.userLibraris[i].filmsInLibrari.Any(item => item.Name == film.Name))
+                {
+                    FilmBox = user.userLibraris[i].filmsInLibrari.Last(item => item.Name == film.Name);
+                    index = user.userLibraris[i].filmsInLibrari.IndexOf(FilmBox);
+
+                    User.currentUser.userLibraris[i].filmsInLibrari[index].Name = FilmNameTextBlock.Text;
+                    User.currentUser.userLibraris[i].filmsInLibrari[index].Mark = Convert.ToDouble(MarkTextBlock.Text);
+                    User.currentUser.userLibraris[i].filmsInLibrari[index].Comment = CommentTextBlock.Text;
+
+                    if (PhotoLinkString != null)
+                        User.currentUser.userLibraris[i].filmsInLibrari[index].Link = PhotoLinkString;
+                }
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -58,10 +80,22 @@ namespace LoginPassword.Pages
                 FilmNameTextBlock.IsReadOnly = false;
                 MarkTextBlock.IsReadOnly = false;
 
+                MarkTextBlock.BorderThickness = new Thickness(0.5);
+                MarkTextBlock.BorderBrush = Brushes.Blue;
+                FilmNameTextBlock.BorderThickness = new Thickness(0.5);
+                FilmNameTextBlock.BorderBrush = Brushes.Blue;
+                CommentTextBlock.BorderThickness = new Thickness(0.5);
+                CommentTextBlock.BorderBrush = Brushes.Blue;
+
                 SaveButtonText.Text = "Save";
             }
             else
             {
+                //
+                ChangeFilmInfoInLibrary(film);
+                //
+                if (MarkTextBlock.Text.Contains('.'))
+                    MarkTextBlock.Text = MarkTextBlock.Text.Replace('.', ',');
                 user.films[index].Name = FilmNameTextBlock.Text;
                 user.films[index].Mark = Convert.ToDouble(MarkTextBlock.Text);
                 user.films[index].Comment = CommentTextBlock.Text;

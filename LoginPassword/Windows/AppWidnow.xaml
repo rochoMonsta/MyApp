@@ -54,7 +54,7 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Grid Background="LightGray">
+    <Grid Background="Black">
         <Frame x:Name="FilmMain" NavigationUIVisibility="Hidden" Margin="60, 60, 0, 0"/>
         <Grid Height="60" VerticalAlignment="Top" Background="#FF686868">
             <TextBlock Text="ABC Launcher"
@@ -153,10 +153,10 @@
             <StackPanel>
                 <Grid Height="150" Background="White" x:Name="UserGrid">
                     <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
-                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF362337" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF686868" Width="25" Height="25"/>
                     </Button>
                     <Button x:Name="ButtonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Kind="Menu" Foreground="#FF362337" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="Menu" Foreground="#FF686868" Width="25" Height="25"/>
                     </Button>
 
                     <StackPanel Orientation="Horizontal" Margin="5,60,5,40">
@@ -168,14 +168,14 @@
                         <TextBlock x:Name="UserName"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                                   Margin="20, 0, 0, 0"
+                                   Margin="15, 0, 0, 0"
                                    Text=""
                                    TextAlignment="Center"
                                    FontFamily="helvetica"
                                    FontWeight="Light"
                                    FontSize="20"
                                    Foreground="#FF686868"
-                                   Width="100">
+                                   Width="110">
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5, 110, 5, 0">
