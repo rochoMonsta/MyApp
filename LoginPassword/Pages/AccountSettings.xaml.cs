@@ -49,6 +49,7 @@ namespace LoginPassword.Pages
         {
             if (IsChanged != true)
             {
+                ErrorLabel.Content = "";
                 Password1.Content = "Enter your password";
                 Password2.Content = "Enter your password again";
                 CheckForCorrectPasswordTextBlock.Text = "Change username and login";
@@ -152,6 +153,7 @@ namespace LoginPassword.Pages
 
         private void ChangePassword_Click(object sender, RoutedEventArgs e)
         {
+            ErrorLabel.Content = "";
             CheckPasswordStackPanel.Visibility = Visibility.Visible;
 
             PasswordTextBox.IsReadOnly = false;
