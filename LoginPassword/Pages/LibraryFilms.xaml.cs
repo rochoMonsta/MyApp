@@ -106,6 +106,8 @@ namespace LoginPassword.Pages
         private void ChangeName_Click(object sender, RoutedEventArgs e)
         {
             LibraryName.IsReadOnly = false;
+            LibraryName.BorderThickness = new Thickness(0.5);
+            LibraryName.BorderBrush = Brushes.Blue;
         }
 
         private void SaveChanged_Click(object sender, RoutedEventArgs e)
@@ -113,6 +115,7 @@ namespace LoginPassword.Pages
             LibraryName.IsReadOnly = true;
             UserLibrari.currentUserLibrari.Name = LibraryName.Text;
             user.userLibraris[UserLibrari.currentUserLibrariIndex].Name = LibraryName.Text;
+            LibraryName.BorderThickness = new Thickness(0);
         }
         public string GetAverageScore(List<Film> listOfFilms)
         {

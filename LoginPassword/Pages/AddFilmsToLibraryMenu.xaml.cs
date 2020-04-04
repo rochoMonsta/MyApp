@@ -26,6 +26,7 @@ namespace LoginPassword.Pages
         {
             InitializeComponent();
             user = User.currentUser;
+            IndexOfSelectedFilms.Clear();
             if (user != null)
             {
                 foreach (var element in user.films)
