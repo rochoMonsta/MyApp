@@ -1,4 +1,5 @@
 ﻿using LoginPassword.Pages;
+using LoginPassword.Styles;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,15 @@ namespace LoginPassword.Windows
         {
             InitializeComponent();
             user = User.currentUser;
+
+            var bc = new BrushConverter();
+            if (user.ProgramStyle != null)
+            {
+                GridMenu.Background = (Brush)bc.ConvertFrom(user.ProgramStyle.GridMenyBrushes);
+                UpGrid.Background = (Brush)bc.ConvertFrom(user.ProgramStyle.UpGridBrushes);
+                IconInLeftGrid.Foreground = (Brush)bc.ConvertFrom(user.ProgramStyle.IconBrushes);
+            }
+
             if (user != null)
             {
                 try

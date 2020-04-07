@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using LoginPassword.Styles;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace LoginPassword
 {
     [DataContract]
+    [KnownType(typeof(StylePurple))]
     public class User
     {
         [DataMember]
@@ -18,7 +20,8 @@ namespace LoginPassword
         public string AvatarLink { get; set; }
         [DataMember]
         public List<UserLibrari> userLibraris = new List<UserLibrari>();
-        //internal List<Film> Films { get => films; set => films = value; }
+        [DataMember]
+        public ProgramStyle ProgramStyle { get; set; }
         public static User currentUser;
         public User() { }
         public User(string Login, string Password)

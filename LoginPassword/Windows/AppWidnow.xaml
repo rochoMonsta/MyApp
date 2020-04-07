@@ -56,7 +56,7 @@
 
     <Grid Background="Black">
         <Frame x:Name="FilmMain" NavigationUIVisibility="Hidden" Margin="60, 60, 0, 0"/>
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF686868">
+        <Grid x:Name="UpGrid" Height="60" VerticalAlignment="Top" Background="#FF686868">
             <TextBlock Text="ABC Launcher"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
@@ -183,7 +183,7 @@
                     </StackPanel>
                     
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF686868">
+                <ListView x:Name="IconInLeftGrid" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF686868">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal" MouseDown="AllFilms_MouseDown">
                             <materialDesign:PackIcon Kind="FilmOpen" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
