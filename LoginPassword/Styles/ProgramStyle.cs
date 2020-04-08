@@ -11,5 +11,7 @@ namespace LoginPassword
         public string UpGridBrushes { get; set; }
         [DataMember]
         public string GridMenyBrushes { get; set; }
+        [DataMember]
+        public string ChangePhoto { get; set; }
     }
 }

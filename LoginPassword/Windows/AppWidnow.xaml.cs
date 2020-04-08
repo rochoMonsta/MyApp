@@ -37,6 +37,7 @@ namespace LoginPassword.Windows
                 GridMenu.Background = (Brush)bc.ConvertFrom(user.ProgramStyle.GridMenyBrushes);
                 UpGrid.Background = (Brush)bc.ConvertFrom(user.ProgramStyle.UpGridBrushes);
                 IconInLeftGrid.Foreground = (Brush)bc.ConvertFrom(user.ProgramStyle.IconBrushes);
+                ChangeUserPhoto.Foreground = (Brush)bc.ConvertFrom(user.ProgramStyle.ChangePhoto);
             }
 
             if (user != null)
@@ -55,11 +56,19 @@ namespace LoginPassword.Windows
                 userFilmsListCopy = user.films;
             IsOpen = true;
         }
-
+        public void CheckForNewFilms()
+        {
+            foreach (var element in user.films)
+                if (!userFilmsListCopy.Contains(element))
+                    userFilmsListCopy.Add(element);
+        }
         private void ButtonPopupBoxLogout_Click(object sender, RoutedEventArgs e)
         {
             Saver saver = new Saver();
             var user_list = saver.LOAD_USER();
+            //
+            CheckForNewFilms();
+            //
             user.films = userFilmsListCopy;
             int index = user_list.GetUserIndex(user);
             user_list.ChangeUserInfo(user, index);
@@ -117,6 +126,9 @@ namespace LoginPassword.Windows
         {
             Saver saver = new Saver();
             var user_list = saver.LOAD_USER();
+            //
+            CheckForNewFilms();
+            //
             user.films = userFilmsListCopy;
             int index = user_list.GetUserIndex(user);
             user_list.ChangeUserInfo(user, index);

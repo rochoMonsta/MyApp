@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using System.Windows.Media;
 
 namespace LoginPassword.Styles
 {
@@ -9,8 +8,9 @@ namespace LoginPassword.Styles
         public StylePurple()
         {
             IconBrushes = "#ffffff";
-            UpGridBrushes = "#b840b6";
-            GridMenyBrushes = "#782977";
+            UpGridBrushes = "#6f2480";
+            GridMenyBrushes = "#541263";
+            ChangePhoto = "#541263";
         }
     }
 }

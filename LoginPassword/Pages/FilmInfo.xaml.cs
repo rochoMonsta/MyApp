@@ -37,7 +37,7 @@ namespace LoginPassword.Pages
             
             if (film != null)
             {
-                if (film.Link != null)
+                if (film.Link != null && film.Link != "")
                     FilmImage.Source = new BitmapImage(new Uri(film.Link));
                 else
                     FilmImage.Source = new BitmapImage(new Uri(@"pack://application:,,,/Resources/screen-0.jpg"));

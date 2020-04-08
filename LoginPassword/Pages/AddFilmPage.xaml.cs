@@ -30,6 +30,7 @@ namespace LoginPassword.Pages
         {
             InitializeComponent();
             user = User.currentUser;
+            PhotoLinkString = "";
         }
         private void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -49,8 +50,8 @@ namespace LoginPassword.Pages
 
         private void AddFilmToUser_Click(object sender, RoutedEventArgs e)
         {
-            if (MarkButton.Text == "Your mark")
-                MarkButton.Text = "0";
+            if (MarkButton.Text == "Your mark" || MarkButton.Text == "")
+                MarkButton.Text = "0,0";
             var Film = new Film()
             {
                 Name = Text_button.Text,
