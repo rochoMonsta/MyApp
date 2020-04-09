@@ -139,7 +139,9 @@
                         <Button Content="Account"
                                 x:Name="AccountButton"
                                 Click="AccountButton_Click"/>
-                        <Button Content="Settings"/>
+                        <Button Content="Settings"
+                                x:Name="SettingsBytton"
+                                Click="SettingsBytton_Click"/>
                         <Button Content="Help"/>
                         <Separator/>
                         <Button x:Name="ButtonPopupBoxLogout" 

@@ -181,5 +181,12 @@ namespace LoginPassword.Windows
             FilmMain.Navigate(page);
             WelcomeTextBlock.Text = "Account settings";
         }
+
+        private void SettingsBytton_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new ProgramSettings();
+            FilmMain.Navigate(page);
+            WelcomeTextBlock.Text = "Program settings";
+        }
     }
 }

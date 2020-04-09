@@ -1,0 +1,224 @@
+﻿<Page x:Class="LoginPassword.Pages.ProgramSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginPassword.Pages"
+      xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="540" d:DesignWidth="1020"
+      Title="ProgramSettings">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="myButtonStyle">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Setter Property="Opacity" Value="0.8"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
+    <Grid Background="Black">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock x:Name="UserLogin"
+                         Foreground="White"
+                         FontFamily="helvetica"
+                         FontWeight="Light"
+                         FontSize="26"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextAlignment="Center"
+                         Text="Style of the program"/>
+                <StackPanel Orientation="Horizontal" Height="50" Width="400">
+                    <Button Height="40" Width="40"
+                            x:Name="DefaultStyleButton"
+                            Click="DefaultStyleButton_Click"
+                            Margin="5, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Gray"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="PurpleStyleButton"
+                            Click="PurpleStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Purple"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="GreenStyleButton"
+                            Click="GreenStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Green"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="CoralStyleButton"
+                            Click="CoralStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="LightSeaGreen"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="RedStyleButton"
+                            Click="RedStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="BlueStyleButton"
+                            Click="BlueStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Blue"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="YellowStyleButton"
+                            Click="YellowStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Yellow"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Height="40" Width="40"
+                            x:Name="OrangeStyleButton"
+                            Click="OrangeStyleButton_Click"
+                            Margin="10, 0, 0, 0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Ellipse x:Name="buttonSurface" Fill="Orange"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="300" Orientation="Vertical">
+                <TextBlock Foreground="White"
+                         FontFamily="helvetica"
+                         FontWeight="Light"
+                         FontSize="26"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextAlignment="Center"
+                         Text="Advanced program settings"/>
+                <StackPanel Orientation="Horizontal" Height="75" Width="400">
+                    <TextBlock Foreground="LightGray"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="22"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Sellect color for UpMenu"
+                               Width="250"/>
+                    <wpfx:ColorPicker Name = "UpGridColorPicker" Height="30" 
+                                      DisplayColorAndName="True"
+                                      Margin="20, 0, 0, 0"
+                                      Width="130"
+                                      Background="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="75" Width="400">
+                    <TextBlock Foreground="LightGray"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="22"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Sellect color for LeMenu"
+                               Width="250"/>
+                    <wpfx:ColorPicker Name = "GridMenyColorPicker" Height="30" 
+                                      DisplayColorAndName="True"
+                                      Margin="20, 0, 0, 0"
+                                      Width="130"
+                                      Background="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="75" Width="400">
+                    <TextBlock Foreground="LightGray"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="22"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Sellect color for Icons"
+                               Width="250"/>
+                    <wpfx:ColorPicker Name = "IconColorPicker" Height="30" 
+                                      DisplayColorAndName="True"
+                                      Margin="20, 0, 0, 0"
+                                      Width="130"
+                                      Background="Black"/>
+                </StackPanel>
+                <Button Style="{StaticResource ModernButtonStyle}"
+                        Width="400"
+                        Height="40"
+                        Content="Save advanced settings"
+                        FontFamily="helvetica"
+                        FontSize="22"
+                        FontWeight="Light"
+                        x:Name="SaveAdvancedSett"
+                        Click="SaveAdvancedSett_Click">
+                </Button>
+            </StackPanel>
+            <TextBlock x:Name="TextBox"
+                     Foreground="LightGray"
+                     FontFamily="helvetica"
+                     FontWeight="Light"
+                     FontSize="20"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     TextAlignment="Center"
+                     Text="Please exit from program for changes"
+                     Margin="20"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -6,6 +6,13 @@ namespace LoginPassword
 {
     [DataContract]
     [KnownType(typeof(StylePurple))]
+    [KnownType(typeof(StyleGreen))]
+    [KnownType(typeof(StyleDefault))]
+    [KnownType(typeof(StyleCoral))]
+    [KnownType(typeof(StyleRed))]
+    [KnownType(typeof(StyleBlue))]
+    [KnownType(typeof(StyleYellow))]
+    [KnownType(typeof(StyleOrange))]
     public class User
     {
         [DataMember]
